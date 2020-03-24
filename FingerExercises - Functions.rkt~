@@ -1,0 +1,59 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |FingerExercises - Functions|) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp") (lib "batch-io.rkt" "teachpack" "2htdp") (lib "universe.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp") (lib "batch-io.rkt" "teachpack" "2htdp") (lib "universe.rkt" "teachpack" "2htdp")) #f)))
+; Extract the first character from a string
+; String -> String
+; Given: "hello", expect: "h"
+; Given: "123", expect: "1"
+(define (string-first str)
+  (substring str 0 1))
+
+(string-first "hello")
+(string-first "123")
+
+; Extract the last character from a string
+; String -> String
+; Given: "hello", expect: "o"
+; Given: "123", expect: "3"
+(define (string-last str)
+  ; get the length of str
+  ; use substring to get string from len-1 to len
+  (substring str (- (string-length str) 1) (string-length str)))
+
+(string-last "hello")
+(string-last "123")
+
+; Count the number of pixels in a given image
+; Image -> Number
+; Given: a 100 x 50 image, expect: 5,000
+; Given: a 16 x 16 image, expect: 256
+(define (image-area img)
+  ; get the widht of the image
+  ; get the height of the image
+  ; multiply them together
+  (* (image-height img) (image-width img)))
+
+(image-area (empty-scene 100 50))
+(image-area (empty-scene 16 16))
+
+; Produces a string like the one given, but with the first character removed
+; String -> String
+; Given: "hello", expect: "ello"
+; Given: "123", expect: "23"
+(define (string-rest str)
+  ; substring from 1 to the end of the string
+  (substring str 1 (string-length str)))
+
+ (string-rest "hello")
+ (string-rest "123")
+
+; Produces a string like the one given, but with the last character removed
+; String -> String
+; Given: "hello", expect: "hell"
+; Given: "123", expect "12"
+(define (string-remove-last str)
+  ; substring from 0 to length-1
+  (substring str 0 (- (string-length str) 1)))
+
+(string-remove-last "hello")
+(string-remove-last "123")
